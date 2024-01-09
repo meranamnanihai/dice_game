@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dicee game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png">
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Refresh Me</h1>
+
+      <div class="dice">
+        <p>Player 1</p>
+        <img class="img1" src="images/dice6.png">
+      </div>
+
+      <div class="dice">
+        <p>Player 2</p>
+        <img class="img2" src="images/dice6.png">
+      </div>
+
+    </div>
+    <div class="footer">
+      www 🎲 App Brewery 🎲 com
+    </div>
+
+    <script>
+      if (sessionStorage.getItem("already_opened") == "yes") {
+        
+      
+      const dice1 = document.getElementsByClassName("img1")[0]
+      const dice2 = document.getElementsByClassName("img2")[0]
+      let randomnumber1 = Math.floor((Math.random() * 6)+1)
+      
+      dice1.src = `images/dice${randomnumber1}.png`
+      let randomnumber2 = Math.floor((Math.random() * 6)+1)
+      dice2.src = `images/dice${randomnumber2}.png`
+      let heading = document.querySelector("h1")
+      if (randomnumber1 > randomnumber2) {
+       
+        heading.innerHTML = "Player 1 has won the game "
+        heading.style.fontSize = "70px"
+      } 
+      else if(randomnumber1 < randomnumber2) {
+        
+        heading.innerHTML = "Player 2 has won the game "
+        heading.style.fontSize = "70px"
+      }
+      else{
+        heading.innerHTML = "It is a draw "
+        heading.style.fontSize = "70px"
+
+      }
+      
+    }
+    sessionStorage.setItem("already_opened","yes")
+      
+    </script>
+  </body>
+
+ 
+  
+</html>
